@@ -63,7 +63,8 @@ def get_wallpaperURL(urlbase, resolution="UHD"):
     return url
 
 
-def get(day=-1, resolution="UHD", market="en-US"):
+def get(day=-1, resolution="UHD", market="zh-CN"):
+    # market="zh-CN" to make day=-1 work to get wallpaper of tomorrow
     if (
         not (int(day) >= -1 and int(day) <= 7)
         or resolution not in resolutions
@@ -76,12 +77,12 @@ def get(day=-1, resolution="UHD", market="en-US"):
     return url
 
 
-@app.route("/")
-def response():
+@app.route("/<path>")
+def response(path):
     # Get args from request
     day = flask.request.args.get("day", default=-1)
     resolution = flask.request.args.get("resolution", default="UHD")
-    market = flask.request.args.get("market", default="en-US")
+    market = flask.request.args.get("market", default="zh-CN")
     # If day = random
     if day == "random":
         day = random.randint(0, 7)
