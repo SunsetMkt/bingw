@@ -77,8 +77,9 @@ def get(day=-1, resolution="UHD", market="zh-CN"):
     return url
 
 
-@app.route("/<path>")
-def response(path):
+@app.route("/")
+@app.route("/<path:path>")
+def response(path=""):
     # Get args from request
     day = flask.request.args.get("day", default=-1)
     resolution = flask.request.args.get("resolution", default="UHD")
