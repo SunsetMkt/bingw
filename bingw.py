@@ -76,6 +76,7 @@ def get(day=-1, resolution="UHD", market="en-US"):
     return url
 
 
+@app.route("/")
 def response():
     # Get args from request
     day = flask.request.args.get("day", default=-1)
@@ -94,5 +95,4 @@ def response():
 
 
 if __name__ == "__main__":
-    app.add_url_rule("/", view_func=response)
     app.run(debug=True)
