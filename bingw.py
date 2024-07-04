@@ -8,6 +8,8 @@ import random
 import flask
 import requests
 
+app = flask.Flask(__name__)
+
 resolutions = [
     "UHD",
     "1920x1200",
@@ -92,6 +94,5 @@ def response():
 
 
 if __name__ == "__main__":
-    app = flask.Flask(__name__)
     app.add_url_rule("/", view_func=response)
     app.run(debug=True)
